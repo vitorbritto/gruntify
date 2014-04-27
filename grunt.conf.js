@@ -8,21 +8,30 @@ module.exports = {
 
     // Setup
     init: {
-        view:   'none',       // Select a Template Engine    - OPTIONS: none, jade, handlebars
-        style:  'stylus',     // Select a preprocessor       - OPTIONS: none, compass, stylus, less
-        module: 'none',       // Select a JavaScript module  - OPTIONS: none, umd, requirejs, browserify
-        deploy: 'ftp-deploy', // Select a deploy method      - OPTIONS: none, ftp-deploy, rsync
-        test:   'mocha',      // Select a unit test tool     - OPTIONS: mocha, jasmine, qunit
-        side:   'both',       // Select a dev side           - OPTIONS: client, server, both
-        env:    '--dev',      // Choose an envinroment       - OPTIONS: --dev, --prod
-        utils:  false         // Would you like to use utils tasks (copy, clean, compress) ?
+        // Select a Template Engine    - OPTIONS: none, jade, handlebars
+        view: 'none',
+
+        // Select a preprocessor       - OPTIONS: none, compass, stylus, less
+        style: 'stylus',
+
+        // Select a JavaScript module  - OPTIONS: none, umd, requirejs, browserify
+        module: 'none',
+
+        // Select a deploy method      - OPTIONS: none, ftp-deploy, rsync
+        deploy: 'none',
+
+        // Select a unit test tool     - OPTIONS: none, mocha, jasmine, qunit
+        test: 'none',
+
+        // Select a development side   - OPTIONS: client, server, both
+        side: 'both'
     },
 
     // Folders
     modules: 'app/scritps/modules',
+    requires: 'app/scripts/requires',
     test: {
         main:    'spec',
-
         helpers: 'spec/helpers',
         modules: 'spec/modules'
     },
@@ -47,13 +56,17 @@ module.exports = {
     // -------------------------------------------------------------------------------------
 
     // Browser Sync
-    sync: {
-        files: [
-            'public/styles/style.css',
-            'public/scripts/app.min.js',
-            'public/*.{php, html}'
-        ]
-    },
+    syncFiles: [
+        'public/styles/style.css',
+        'public/scripts/app.min.js',
+        'public/*.{php, html}'
+    ],
+
+    // Uglify
+    minifyFiles: ['app/scripts/**/*.js'],
+
+    // Lint
+    lintFiles: ['Gruntfile.js', 'app/scripts/main.js'],
 
     // Deploy
     deploy: {
@@ -66,16 +79,6 @@ module.exports = {
             '*.scss',
             'node_modules'
         ]
-    },
-
-    // Uglify
-    minify: {
-        files: ['app/scripts/**/*.js']
-    },
-
-    // Lint
-    lint: {
-        files: ['Gruntfile.js', 'app/scripts/main.js']
     },
 
     // Banner
