@@ -21,7 +21,7 @@ INFO  = \033[36m→\033[36m
 LINE  = -----------------------------------------
 
 # Scaffolding
-APP    = app/{scripts/{modules,vendors},styles,images/icons,fonts,views,spec/{helpers,modules}}
+APP    = app/{scripts/{modules,requires},styles,images/icons,fonts,views,spec/{helpers,modules}}
 PUBLIC = public/{scripts,styles,images/icons,fonts}
 
 
