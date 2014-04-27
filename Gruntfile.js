@@ -7,7 +7,6 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
     var config = require('./grunt.conf');
 
-
     // --- Load Tasks -------------------------------------------------------------------
     grunt.loadTasks('./tasks');
 
@@ -53,21 +52,28 @@ module.exports = function(grunt) {
     grunt.registerTask('images', 'Optimize Images', ['imageoptim']);
 
     // Test Task
-    grunt.registerTask('test', 'Test your application', [config.init.test]);
+    if (config.init.test !== 'none') {
+        grunt.registerTask('test', 'Test your application', [config.init.test]);
+    }
 
     // Deploy Task
-    grunt.registerTask('deploy', 'Deploy for production', [config.init.deploy]);
+    if (config.init.deploy !== 'none') {
+        grunt.registerTask('deploy', 'Deploy for production', [config.init.deploy]);
+    }
 
     // Bundle Task
-    grunt.registerTask('bundle', 'Bundle Assets', [config.init.module]);
+    if (config.init.module !== 'none') {
+        grunt.registerTask('bundle', 'Bundle Assets', [config.init.module]);
+    }
 
     // Build Project
-    grunt.registerTask('build', 'Build project', [
-        'styles',
-        'scripts',
-        'views',
-        'images'
-    ]);
+    grunt.registerTask('build', 'Build project', function() {
+        if (config.init.view !== 'none') {
+            grunt.task.run(['styles', 'scripts', 'images', config.init.view, 'copy']);
+        } else {
+            grunt.task.run(['styles', 'scripts', 'images', 'htmlmin' , 'copy']);
+        }
+    });
 
     // Launch Project
     grunt.registerTask('launch', 'Deploy files for production', [
