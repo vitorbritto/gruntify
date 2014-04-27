@@ -24,18 +24,41 @@ module.exports = function(grunt) {
             },
 
             // BROWSERIFY
-            // dist: {
+            // vendor: {
+            //     src: config.requires + '/**/*.js',
+            //     dest: config.dist.scripts + '/vendor.js'
+            //     options: {
+            //         shim: {
+            //             jquery: {
+            //                 path: config.requires + '/jquery/jquery.js',
+            //                 exports: '$'
+            //             }
+            //         }
+            //     }
+            // },
+            // app: {
             //     files: {
             //         src: config.modules + '/**/*.js',
-            //         dest: config.dist.scripts + '/bundle.js'
+            //         dest: config.dist.scripts + '/app.js'
             //     },
             //     options: {
-            //         transform: ['']
+            //         transform: ['hbsfy'],
+            //         external: ['jquery']
+            //     }
+            // },
+            // test: {
+            //     files: {
+            //         src: config.spec.main + '/**/*.js',
+            //         dest: config.dist.scripts + '/test.js'
+            //     },
+            //     options: {
+            //         transform: ['hbsfy'],
+            //         external: ['jquery']
             //     }
             // }
 
             // UMD
-            // all: {
+            // dist: {
             //     src: config.modules + '/**/*.js',
             //     dest: config.dist.scripts + '/bundle.js', // optional, if missing the src will be used
             //     template: 'path/to/template.hbs', // optional; a template from templates subdir (e.g. 'umd')

@@ -31,9 +31,18 @@ module.exports = function(grunt) {
 
         grunt.config('copy', {
             main: {
-                src: config.src.main,
-                dest: config.dist.main
+                files: [
+                    {
+                        src: config.src.images + '/*',
+                        dest: config.dist.images + '/'
+                    },
+                    {
+                        src: config.src.fonts + '/*',
+                        dest: config.dist.fonts + '/'
+                    }
+                ]
             }
+
         });
 
         grunt.loadNpmTasks('grunt-contrib-compress');

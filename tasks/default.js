@@ -8,9 +8,10 @@ module.exports = function(grunt) {
 
     grunt.config('concurrent', {
 
-        // OPTIONS
-        // target1: ['script', 'styles'],
-        // target2: ['jshint', 'test']
+        tasks: ['nodemon', 'watch'],
+        options: {
+            logConcurrentOutput: true
+        }
 
     });
 

@@ -47,67 +47,15 @@ module.exports = function(grunt) {
 
         grunt.config('karma', {
 
-            // Unit testing is provided by Karma.  Change the two commented locations
-            // below to either: mocha, jasmine, or qunit.
             options: {
-                basePath: process.cwd(),
-                singleRun: true,
-                captureTimeout: 7000,
-                autoWatch: true,
-                logLevel: 'ERROR',
-
-                reporters: ['dots', 'coverage'],
-                browsers: ['PhantomJS'],
-
-                // Change this to the framework you want to use.
-                frameworks: ['mocha'],
-
-                plugins: [
-                    'karma-jasmine',
-                    'karma-mocha',
-                    'karma-qunit',
-                    'karma-phantomjs-launcher',
-                    'karma-coverage'
-                ],
-
-                preprocessors: {
-                    'app/**/*.js': 'coverage'
-                },
-
-                coverageReporter: {
-                    type: 'lcov',
-                    dir: 'test/coverage'
-                },
-
-                files: [
-                    // You can optionally remove this or swap out for a different expect.
-                    'vendor/bower/chai/chai.js',
-                    'vendor/bower/requirejs/require.js',
-                    'test/runner.js',
-
-                    { pattern: 'app/**/*.*', included: false },
-                    // Derives test framework from Karma configuration.
-                    {
-                        pattern: 'test/<%= karma.options.frameworks[0] %>/**/*.spec.js',
-                        included: false
-                    },
-                    { pattern: 'vendor/**/*.js', included: false }
-                ]
+                configFile: 'karma.conf.js'
             },
-
-            // This creates a server that will automatically run your tests when you
-            // save a file and display results in the terminal.
-            daemon: {
-                options: {
-                    singleRun: false
-                }
+            watcher: {
+                background: true,
+                singleRun: false
             },
-
-            // This is useful for running the tests just once.
-            run: {
-                options: {
-                    singleRun: true
-                }
+            test: {
+                singleRun: true
             }
 
         });
