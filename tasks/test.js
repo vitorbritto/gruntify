@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
     var config = require('../grunt.conf');
 
-    if (config.init.test !== 'none' || config.init.karma !== true) {
+    if (config.init.test !== 'none') {
 
         grunt.config(config.init.test, {
 
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
             grunt.loadNpmTasks('grunt-contrib-' + config.init.test);
         }
 
-    } else {
+    } else if (config.init.karma) {
 
         grunt.config('karma', {
 
@@ -67,6 +67,9 @@ module.exports = function(grunt) {
             }
 
         });
+
+        grunt.loadNpmTasks('grunt-karma');
+        grunt.loadNpmTasks('grunt-karma-coveralls');
 
     }
 

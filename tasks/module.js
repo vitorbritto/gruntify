@@ -42,8 +42,8 @@ module.exports = function(grunt) {
             //         dest: config.dist.scripts + '/app.js'
             //     },
             //     options: {
-            //         transform: ['hbsfy'],
-            //         external: ['jquery']
+            //         transform: config.transforms,
+            //         external: config.dependencies.global
             //     }
             // },
             // test: {
@@ -52,8 +52,8 @@ module.exports = function(grunt) {
             //         dest: config.dist.scripts + '/test.js'
             //     },
             //     options: {
-            //         transform: ['hbsfy'],
-            //         external: ['jquery']
+            //         transform: config.transforms,
+            //         external: config.dependencies.global
             //     }
             // }
 
@@ -67,10 +67,10 @@ module.exports = function(grunt) {
             //     globalAlias: 'alias', // optional, changes the name of the global variable
             //     indent: '  ', // optional, indent source code
             //     deps: { // optional
-            //         'default': ['foo', 'bar'],
-            //         amd: ['foobar', 'barbar'],
-            //         cjs: ['foo', 'barbar'],
-            //         global: ['foobar', 'bar']
+            //         'default': config.dependencies.default,
+            //         amd: config.dependencies.amd,
+            //         cjs: config.dependencies.cjs,
+            //         global: config.dependencies.global
             //     }
             // }
 

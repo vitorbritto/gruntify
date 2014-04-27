@@ -17,13 +17,13 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'Initialize and watch for changes', function() {
         if (config.init.side === 'client') {
             grunt.log.writeln('Initializing tasks for client-side');
-            grunt.task.run(['browser-sync', 'watch']);
+            grunt.task.run(['browserSync', 'watch']);
         } else if (config.init.side === 'server') {
             grunt.log.writeln('Initializing tasks for server-side');
             grunt.task.run(['nodemon', 'watch']);
         } else if (config.init.side === 'both') {
             grunt.log.writeln('Initializing tasks for server-side');
-            grunt.task.run(['browser-sync', 'nodemon', 'watch']);
+            grunt.task.run(['browserSync', 'nodemon', 'watch']);
         }
     });
 

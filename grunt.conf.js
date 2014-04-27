@@ -23,8 +23,11 @@ module.exports = {
         // Select a unit test tool     - OPTIONS: none, mocha, jasmine, qunit
         test: 'none',
 
+        // Would you like to use Karma?
+        karma: true,
+
         // Select a development side   - OPTIONS: client, server, both
-        side: 'both'
+        side: 'client'
     },
 
     // Folders
@@ -79,6 +82,23 @@ module.exports = {
             '*.scss',
             'node_modules'
         ]
+    },
+
+    // Modules
+    transforms: [
+        'hsbfy',
+        'es6fy',
+        'coffefy',
+        'debowerify',
+        'decomponentify',
+        'deamdify',
+        'deglobalify'
+    ],
+    dependencies: {
+        'default': [''],
+        global: ['jquery'],
+        amd: [''],
+        cjs: ['']
     },
 
     // Banner

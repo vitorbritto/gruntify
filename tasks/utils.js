@@ -10,45 +10,51 @@ module.exports = function(grunt) {
 
     var config = require('../grunt.conf');
 
-    if (config.init.utils) {
+    grunt.config('concurrent', {
 
-        grunt.config('clean', {
-            build: ['path/to/dir/one', 'path/to/dir/two'],
-            release: ['path/to/another/dir/one', 'path/to/another/dir/two']
-        });
+        tasks: ['nodemon', 'watch'],
+        options: {
+            logConcurrentOutput: true
+        }
 
-        grunt.config('compress', {
-            release: {
-                options: {
-                    mode: 'gzip'
+    });
+
+    grunt.config('clean', {
+        build: ['path/to/dir/one', 'path/to/dir/two'],
+        release: ['path/to/another/dir/one', 'path/to/another/dir/two']
+    });
+
+    grunt.config('compress', {
+        release: {
+            options: {
+                mode: 'gzip'
+            },
+            expand: true,
+            cwd: config.dist.main,
+            src: ['**/*'],
+            dest: config.dist.main
+        }
+    });
+
+    grunt.config('copy', {
+        main: {
+            files: [
+                {
+                    src: config.src.images + '/*',
+                    dest: config.dist.images + '/'
                 },
-                expand: true,
-                cwd: config.dist.main,
-                src: ['**/*'],
-                dest: config.dist.main
-            }
-        });
+                {
+                    src: config.src.fonts + '/*',
+                    dest: config.dist.fonts + '/'
+                }
+            ]
+        }
 
-        grunt.config('copy', {
-            main: {
-                files: [
-                    {
-                        src: config.src.images + '/*',
-                        dest: config.dist.images + '/'
-                    },
-                    {
-                        src: config.src.fonts + '/*',
-                        dest: config.dist.fonts + '/'
-                    }
-                ]
-            }
+    });
 
-        });
-
-        grunt.loadNpmTasks('grunt-contrib-compress');
-        grunt.loadNpmTasks('grunt-contrib-copy');
-        grunt.loadNpmTasks('grunt-contrib-clean');
-
-    }
+    grunt.loadNpmTasks('grunt-concurrent');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
 };
