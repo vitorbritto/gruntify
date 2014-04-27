@@ -24,6 +24,9 @@ LINE  = -----------------------------------------
 APP    = app/{scripts/{modules,requires},styles,images/icons,fonts,views,spec/{helpers,modules}}
 PUBLIC = public/{scripts,styles,images/icons,fonts}
 
+SCRIPT = app/scripts/main.js
+STYLE  = app/styles/style.styl
+VIEW   = app/index.html
 
 # -------------------------------------------------------------------------------------
 # BUILD
@@ -38,6 +41,10 @@ init:
 
 	@mkdir -p $(APP)
 	@mkdir -p $(PUBLIC)
+
+	@touch $(SCRIPT)
+	@touch $(STYLE)
+	@touch $(VIEW)
 
 npm:
 	@echo " $(INFO) Installing Dependencies"
