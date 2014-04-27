@@ -17,7 +17,7 @@ First of all, make sure you have [NodeJS](http://nodejs.org/) and [Grunt CLI](ht
 **New project**
 
 ```bash
-# 1. Clone this repository
+# 1. Clone this repository (make sure to be in the project directory)
 $ git clone git://github.com/vitorbritto/gruntify.git
 
 # 2. Execute the makefile
@@ -30,7 +30,7 @@ $ make
 **Existing Project**
 
 ```bash
-# 1. Clone this repository
+# 1. Clone this repository (make sure to be in the project directory)
 $ git clone git://github.com/vitorbritto/gruntify.git
 
 # 2. Install Dependencies
