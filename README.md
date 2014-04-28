@@ -43,9 +43,9 @@ $ make current
 
 ### How it works?
 
-**Configuration:**
+#### 1. Configuration
 
-The `config.js` file contain all the necessary settings for your build process. Check out a detailed diagram of the initial configuration:
+The `grunt.conf.js` file contain all the necessary settings for your build process. Check out a detailed diagram of the initial configuration:
 
 ```
 // -------------------------------------------------------------------------------------
@@ -159,7 +159,175 @@ banner: '\n' +
 '\n'
 ```
 
-**Available tasks:**
+#### 2. Select Tasks
+
+Inside the `./task` folder, you'll find each task. For **views**, **styles**, **tests** and **modules** you need to select which task configuration you want to run with Grunt. Just **uncomment** the selected one and **comment** the other(s) you don't want to use.
+
+> Notes:
+> 1. For `styles` tasks, if you select **none**, `cssmin` task will be used by default.
+> 2. For `views` tasks, if you select **none**, `htmlmin` task will be used by default.
+
+See examples bellow:
+
+**Styles**
+
+```js
+// STYLUS
+compile: {
+    options: {
+        // use: [ require('nib') ],
+        compress: true
+    },
+    files: {
+        src:  config.src.styles + '/style.styl',
+        dest: config.dist.styles + '/style.css'
+    }
+}
+
+// COMPASS
+// compile: {
+//     options: {
+//         force: true,
+//         banner: config.banner,
+//         sassDir: config.src.styles,
+//         cssDir: config.dist.styles,
+//         javascriptsDir: config.src.scripts,
+//         fontsDir: config.src.fonts,
+//         imagesDir: config.src.images,
+//         outputStyle: 'compressed',
+//         require: []
+//     }
+// }
+
+// LESS
+// compile: {
+//     options: {
+//         paths: config.src.styles
+//     },
+//     files: {
+//         src:  config.src.styles + '/style.less',
+//         dest: config.dist.styles + '/style.css'
+//     }
+// }
+```
+
+**Views**
+
+```js
+// JADE - Use jade for Template Engine
+dist: {
+    options: {
+        data: {
+            debug: false
+        }
+    },
+    files: {
+        src: config.src.views + '**/*.jade',
+        dest: config.dist.main
+    }
+}
+
+// HANDLEBARS
+// dist: {
+//     options: {
+//         namespace: 'JST'
+//     },
+//     files: {
+//         src: config.src.views + '**/*.jade',
+//         dest: config.dist.main
+//     }
+// }
+```
+
+**Unit Tests**
+
+```js
+// MOCHA
+test: {
+    src: config.test.main + '/*.html',
+    options: {
+        run: true,
+    },
+}
+
+// JASMINE
+pivotal: {
+    src: config.test.src + '/**/*.js',
+    options: {
+        specs: config.test.modules + '/*Spec.js',
+        helpers: config.test.helpers + '/*Helper.js'
+    }
+}
+
+// QUNIT
+all: [config.test.main + '/**/*.html']
+```
+
+**Modules**
+
+```js
+// REQUIREJS
+dist: {
+    options: {
+        baseUrl: config.modules + '/**/*.js',
+        mainConfigFile: config.src.scripts + '/config.js',
+        out: config.dist.scripts + '/bundle.js',
+    }
+},
+
+// BROWSERIFY
+// vendor: {
+//     src: config.requires + '/**/*.js',
+//     dest: config.dist.scripts + '/vendor.js'
+//     options: {
+//         shim: {
+//             jquery: {
+//                 path: config.requires + '/jquery/jquery.js',
+//                 exports: '$'
+//             }
+//         }
+//     }
+// },
+// app: {
+//     files: {
+//         src: config.modules + '/**/*.js',
+//         dest: config.dist.scripts + '/app.js'
+//     },
+//     options: {
+//         transform: config.transforms,
+//         external: config.dependencies.global
+//     }
+// },
+// test: {
+//     files: {
+//         src: config.spec.main + '/**/*.js',
+//         dest: config.dist.scripts + '/test.js'
+//     },
+//     options: {
+//         transform: config.transforms,
+//         external: config.dependencies.global
+//     }
+// }
+
+// UMD
+// dist: {
+//     src: config.modules + '/**/*.js',
+//     dest: config.dist.scripts + '/bundle.js', // optional, if missing the src will be used
+//     template: 'path/to/template.hbs', // optional; a template from templates subdir (e.g. 'umd')
+//     objectToExport: 'library', // optional, internal object that will be exported
+//     amdModuleId: 'id', // optional, if missing the AMD module will be anonymous
+//     globalAlias: 'alias', // optional, changes the name of the global variable
+//     indent: '  ', // optional, indent source code
+//     deps: { // optional
+//         'default': config.dependencies.default,
+//         amd: config.dependencies.amd,
+//         cjs: config.dependencies.cjs,
+//         global: config.dependencies.global
+//     }
+// }
+```
+
+### 3. Execute tasks
 
 - `grunt`: Initialize and watch for changes
 - `grunt styles`: Optimize CSS
