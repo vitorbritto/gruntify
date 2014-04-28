@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             grunt.task.run(['nodemon', 'watch']);
         } else if (config.init.side === 'both') {
             grunt.log.writeln('Initializing tasks for server-side');
-            grunt.task.run(['browserSync', 'nodemon', 'watch']);
+            grunt.task.run(['concurrent:all']);
         }
     });
 

@@ -1,5 +1,6 @@
 // AVAILABLE PLUGINS
 // -----------------
+// grunt-concurrent: https://github.com/gruntjs/grunt-concurrent
 // grunt-contrib-compress: https://github.com/gruntjs/grunt-contrib-compress
 // grunt-contrib-copy: https://github.com/gruntjs/grunt-contrib-copy
 // grunt-contrib-clean: https://github.com/gruntjs/grunt-contrib-clean
@@ -12,9 +13,11 @@ module.exports = function(grunt) {
 
     grunt.config('concurrent', {
 
-        tasks: ['nodemon', 'watch'],
-        options: {
-            logConcurrentOutput: true
+        all: {
+            tasks: ['browserSync', 'nodemon', 'watch'],
+            options: {
+                logConcurrentOutput: true
+            }
         }
 
     });
