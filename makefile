@@ -28,15 +28,22 @@ SCRIPT = app/scripts/main.js
 STYLE  = app/styles/style.styl
 VIEW   = app/index.html
 
+# Global Tasks
+global:
+	@echo " $(INFO) Installing Dependencies... please wait."
+	@npm install -q
+	@rm -rf makefile logo-gruntify.jpg README.md
+
+
 # -------------------------------------------------------------------------------------
-# BUILD
+# NEW PROJECT
 # -------------------------------------------------------------------------------------
 
-build: init npm
+new: init_new global
 	@echo ""
 	@echo " $(CHECK) Done!"
 
-init:
+init_new:
 	@echo " $(INFO) Scaffolding"
 
 	@mkdir -p $(APP)
@@ -46,7 +53,19 @@ init:
 	@touch $(STYLE)
 	@touch $(VIEW)
 
-npm:
-	@echo " $(INFO) Installing Dependencies"
-	@npm install
 
+# -------------------------------------------------------------------------------------
+# EXISTING PROJECT
+# -------------------------------------------------------------------------------------
+
+
+current: init_current global
+	@echo ""
+	@echo " $(CHECK) Done!"
+
+init_current:
+	@echo " $(INFO) Scaffolding"
+
+	@mv * .[^.]* ..
+
+	@rm gruntify
