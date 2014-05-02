@@ -1,4 +1,7 @@
 module.exports = function(config) {
+
+    'use strict';
+
     config.set({
 
         // base path, that will be used to resolve files and exclude
@@ -8,7 +11,6 @@ module.exports = function(config) {
         // frameworks to use
         frameworks: ['mocha'],
 
-
         plugins: [
             'karma-jasmine',
             'karma-mocha',
@@ -17,9 +19,11 @@ module.exports = function(config) {
             'karma-coverage'
         ],
 
+
         preprocessors: {
             'app/**/*.js': 'coverage'
         },
+
 
         coverageReporter: {
             type: 'lcov',
