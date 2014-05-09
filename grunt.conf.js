@@ -86,9 +86,9 @@ module.exports = {
 
     // Modules
     transforms: [
-        'hsbfy',
-        'es6fy',
-        'coffefy',
+        'hbsfy',
+        'es6ify',
+        'coffeeify',
         'debowerify',
         'decomponentify',
         'deamdify',
