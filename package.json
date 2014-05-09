@@ -71,5 +71,8 @@
     "grunt-mocha": "^0.4.10",
     "grunt-karma": "^0.8.2",
     "grunt-karma-coveralls": "^2.3.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.1"
   }
 }
