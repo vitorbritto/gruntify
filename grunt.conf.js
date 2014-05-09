@@ -84,7 +84,8 @@ module.exports = {
         ]
     },
 
-    // Modules
+    // Browserify
+    // List of transforms: https://github.com/substack/node-browserify/wiki/list-of-transforms
     transforms: [
         'hbsfy',
         'es6ify',
@@ -94,6 +95,8 @@ module.exports = {
         'deamdify',
         'deglobalify'
     ],
+
+    // UMD
     dependencies: {
         'default': [''],
         global: ['jquery'],
