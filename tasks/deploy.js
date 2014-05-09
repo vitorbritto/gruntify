@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 
     var config = require('../grunt.conf');
 
-    if (config.init.module !== 'none') {
+    if (config.init.deploy !== 'none') {
 
         grunt.config(config.init.deploy, {
 
