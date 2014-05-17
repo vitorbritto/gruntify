@@ -214,7 +214,7 @@ compile: {
 **Views**
 
 ```js
-// JADE - Use jade for Template Engine
+// JADE
 dist: {
     options: {
         data: {
