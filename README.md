@@ -185,30 +185,30 @@ compile: {
 }
 
 // COMPASS
-// compile: {
-//     options: {
-//         force: true,
-//         banner: config.banner,
-//         sassDir: config.src.styles,
-//         cssDir: config.dist.styles,
-//         javascriptsDir: config.src.scripts,
-//         fontsDir: config.src.fonts,
-//         imagesDir: config.src.images,
-//         outputStyle: 'compressed',
-//         require: []
-//     }
-// }
+compile: {
+    options: {
+        force: true,
+        banner: config.banner,
+        sassDir: config.src.styles,
+        cssDir: config.dist.styles,
+        javascriptsDir: config.src.scripts,
+        fontsDir: config.src.fonts,
+        imagesDir: config.src.images,
+        outputStyle: 'compressed',
+        require: []
+    }
+}
 
 // LESS
-// compile: {
-//     options: {
-//         paths: config.src.styles
-//     },
-//     files: {
-//         src:  config.src.styles + '/style.less',
-//         dest: config.dist.styles + '/style.css'
-//     }
-// }
+compile: {
+    options: {
+        paths: config.src.styles
+    },
+    files: {
+        src:  config.src.styles + '/style.less',
+        dest: config.dist.styles + '/style.css'
+    }
+}
 ```
 
 **Views**
@@ -228,15 +228,15 @@ dist: {
 }
 
 // HANDLEBARS
-// dist: {
-//     options: {
-//         namespace: 'JST'
-//     },
-//     files: {
-//         src: config.src.views + '**/*.jade',
-//         dest: config.dist.main
-//     }
-// }
+dist: {
+    options: {
+        namespace: 'JST'
+    },
+    files: {
+        src: config.src.views + '**/*.jade',
+        dest: config.dist.main
+    }
+}
 ```
 
 **Unit Tests**
@@ -276,55 +276,55 @@ dist: {
 },
 
 // BROWSERIFY
-// vendor: {
-//     src: config.requires + '/**/*.js',
-//     dest: config.dist.scripts + '/vendor.js'
-//     options: {
-//         shim: {
-//             jquery: {
-//                 path: config.requires + '/jquery/jquery.js',
-//                 exports: '$'
-//             }
-//         }
-//     }
-// },
-// app: {
-//     files: {
-//         src: config.modules + '/**/*.js',
-//         dest: config.dist.scripts + '/app.js'
-//     },
-//     options: {
-//         transform: config.transforms,
-//         external: config.dependencies.global
-//     }
-// },
-// test: {
-//     files: {
-//         src: config.spec.main + '/**/*.js',
-//         dest: config.dist.scripts + '/test.js'
-//     },
-//     options: {
-//         transform: config.transforms,
-//         external: config.dependencies.global
-//     }
-// }
+vendor: {
+    src: config.requires + '/**/*.js',
+    dest: config.dist.scripts + '/vendor.js'
+    options: {
+        shim: {
+            jquery: {
+                path: config.requires + '/jquery/jquery.js',
+                exports: '$'
+            }
+        }
+    }
+},
+app: {
+    files: {
+        src: config.modules + '/**/*.js',
+        dest: config.dist.scripts + '/app.js'
+    },
+    options: {
+        transform: config.transforms,
+        external: config.dependencies.global
+    }
+},
+test: {
+    files: {
+        src: config.spec.main + '/**/*.js',
+        dest: config.dist.scripts + '/test.js'
+    },
+    options: {
+        transform: config.transforms,
+        external: config.dependencies.global
+    }
+}
 
 // UMD
-// dist: {
-//     src: config.modules + '/**/*.js',
-//     dest: config.dist.scripts + '/bundle.js', // optional, if missing the src will be used
-//     template: 'path/to/template.hbs', // optional; a template from templates subdir (e.g. 'umd')
-//     objectToExport: 'library', // optional, internal object that will be exported
-//     amdModuleId: 'id', // optional, if missing the AMD module will be anonymous
-//     globalAlias: 'alias', // optional, changes the name of the global variable
-//     indent: '  ', // optional, indent source code
-//     deps: { // optional
-//         'default': config.dependencies.default,
-//         amd: config.dependencies.amd,
-//         cjs: config.dependencies.cjs,
-//         global: config.dependencies.global
-//     }
-// }
+dist: {
+    src: config.modules + '/**/*.js',
+    dest: config.dist.scripts + '/bundle.js',    // optional, if missing the src will be used
+    template: 'path/to/template.hbs',            // optional; a template from templates subdir (e.g. 'umd')
+    objectToExport: 'library',                   // optional, internal object that will be exported
+    amdModuleId: 'id',                           // optional, if missing the AMD module will be anonymous
+    globalAlias: 'alias',                        // optional, changes the name of the global variable
+    indent: '  ',                                // optional, indent source code
+    deps: {                                      // optional
+        'default': config.dependencies.default,
+        amd: config.dependencies.amd,
+        cjs: config.dependencies.cjs,
+        global: config.dependencies.global
+    }
+}
 ```
 
 ### 3. Execute tasks
