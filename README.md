@@ -1,8 +1,8 @@
 ![Gruntify Logo](logo-gruntify.jpg "Gruntify")
 
-Gruntify is a project inspired by [Makefy](https://github.com/vitorbritto/makefy). It's a shortcut that I use in my projects, in order to facilitate the configuration of projects that uses Grunt.
+Gruntify is a project inspired by [Makefy](https://github.com/vitorbritto/makefy). It's a shortcut to start a new project with Grunt or place it in your current project.
 
-That's a sweet way to use Grunt. You'll install **once** all dependencies in **development** environment, define your tasks, set your configuration and build it. All the tasks are well commented with specific options for each plugin.
+You'll install **only once** all dependencies in **development** environment, define your tasks, set your configuration and build it. All the tasks are well commented with specific options for each plugin.
 
 > **TODO LIST:** you can check updates notes [here](https://github.com/vitorbritto/gruntify/issues/)
 
