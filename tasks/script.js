@@ -10,14 +10,17 @@ module.exports = function(grunt) {
     var config = require('../grunt.conf');
 
     grunt.config('uglify', {
+        path: {
+            src: config.minifyFiles,
+            dest: config.dist.scripts + '/app.min.js'
+        }
         options: {
             mangle: false,
             banner: config.banner
         },
         dist: {
             files: {
-                src: config.minifyFiles,
-                dest: config.dist.scripts + '/app.min.js'
+                '<%= path.dest%>': '<%= path.src%>'
             }
         }
     });
