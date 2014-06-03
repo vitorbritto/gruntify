@@ -18,7 +18,15 @@ module.exports = function(grunt) {
                     src: config.syncFiles
                 },
                 options: {
-                    watchTask: true
+                    watchTask: true,
+                    // baseDir: '',
+                    // host: '',
+                    ghostMode: {
+                        clicks: true,
+                        scroll: true,
+                        links: true,
+                        forms: true
+                    }
                 }
             }
         });
@@ -44,7 +52,7 @@ module.exports = function(grunt) {
 
         grunt.config('nodemon', {
             dev: {
-                script: 'index.js',
+                script: 'app.js',
                 options: {
                     args: ['dev'],
                     nodeArgs: ['--debug'],
@@ -78,10 +86,18 @@ module.exports = function(grunt) {
         grunt.config('browserSync', {
             dev: {
                 bsFiles: {
-                    src: config.sync.files
+                    src: config.syncFiles
                 },
                 options: {
-                    watchTask: true
+                    watchTask: true,
+                    // baseDir: '',
+                    // host: '',
+                    ghostMode: {
+                        clicks: true,
+                        scroll: true,
+                        links: true,
+                        forms: true
+                    }
                 }
             }
         });
@@ -102,7 +118,7 @@ module.exports = function(grunt) {
 
         grunt.config('nodemon', {
             dev: {
-                script: 'index.js',
+                script: 'app.js',
                 options: {
                     args: ['dev'],
                     nodeArgs: ['--debug'],
