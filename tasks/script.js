@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         path: {
             src: config.minifyFiles,
             dest: config.dist.scripts + '/app.min.js'
-        }
+        },
         options: {
             mangle: false,
             banner: config.banner
