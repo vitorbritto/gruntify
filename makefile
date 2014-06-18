@@ -46,8 +46,8 @@ new: init_new global
 init_new:
 	@echo " $(INFO) Scaffolding"
 
-	@mkdir -p $(APP)
-	@mkdir -p $(PUBLIC)
+	@bash -c "mkdir -p $(APP)"
+	@bash -c "mkdir -p $(PUBLIC)"
 
 	@touch $(SCRIPT)
 	@touch $(STYLE)
