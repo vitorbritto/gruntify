@@ -31,7 +31,7 @@ module.exports = {
     },
 
     // Folders
-    modules: 'app/scritps/modules',
+    modules: 'app/scripts/modules',
     requires: 'app/scripts/requires',
     test: {
         main:    'spec',
